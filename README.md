@@ -1,6 +1,6 @@
 # miniproject
 
-This script is designed to pull SRA data from NCBI, trim reads and assemble genomes, and submit the assemblies to PHASTER.
+This script is designed to pull SRA data from NCBI, trim reads and assemble genomes, submit the assemblies to PHASTER, and record job ids from PHASTER.
 
 In order to run this code, a text file with a list of SRA accession numbers each on their own line must be created.  The textfile and this script should be in the same location.
 
