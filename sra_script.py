@@ -7,7 +7,7 @@ f=open(sys.argv[1])
 x=f.readlines()
 f.close()
 # open outfile with csv format
-outfile=open("/home/catherine/Olivia/results/phaster_job_ids.csv","w")
+outfile=open("./results/phaster_job_ids.csv","w")
 # for every SRA 
 for i in x:
     # remove whiteline space
@@ -19,11 +19,11 @@ for i in x:
     file1=i+"_1.fastq"
     file2=i+"_2.fastq"
     # use bbduk to trim reads
-    os.system("/home/catherine/Software/bbmap/bbduk.sh in=/home/catherine/Olivia/"+i+"/"+file1+" in2=/home/catherine/Olivia/"+i+"/"+file2 +" out=trimmed_"+file1+" out2=trimmed_"+file2+" threads=16")
+    os.system("/home/catherine/Software/bbmap/bbduk.sh in=./"+i+"/"+file1+" in2=/home/catherine/Olivia/"+i+"/"+file2 +" out=trimmed_"+file1+" out2=trimmed_"+file2+" threads=16")
     # use SPAdes to assemble genome
-    os.system("/home/catherine/SPAdes/SPAdes-3.14.1-Linux/bin/spades.py -1 trimmed_"+file1+" -2 trimmed_"+file2+" -o /home/catherine/Olivia/results/"+i+"_assembly --only-assembler -k 55,77,99,127")
+    os.system("/home/catherine/SPAdes/SPAdes-3.14.1-Linux/bin/spades.py -1 trimmed_"+file1+" -2 trimmed_"+file2+" -o ./results/"+i+"_assembly --only-assembler -k 55,77,99,127")
     # use wget to upload files to Phaster
-    os.system('wget --post-file="/home/catherine/Olivia/results/'+i+'_assembly/contigs.fasta" "http://phaster.ca/phaster_api?contigs=1" -O '+i+'_phaster')
+    os.system('wget --post-file="./results/'+i+'_assembly/contigs.fasta" "http://phaster.ca/phaster_api?contigs=1" -O '+i+'_phaster')
     # open returned file from Phaster
     f=open(i+'_phaster')
     # read the first line, which is in dictionary format
