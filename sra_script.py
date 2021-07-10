@@ -14,7 +14,7 @@ for i in x:
     i=i.strip()
     # retrieve files and split them
     os.system("~/Software/sratoolkit.2.11.0-ubuntu64/bin/prefetch "+i)
-    os.system("~/Software/sratoolkit.2.11.0-ubuntu64/bin/fastq-dump -I --split-files /home/catherine/SRA_TRY_DOWLONAD/sra/"+i+".sra -O "+i)
+    os.system("~/Software/sratoolkit.2.11.0-ubuntu64/bin/fastq-dump -I --split-files ~/SRA_TRY_DOWLONAD/sra/"+i+".sra -O "+i)
     # save file1 and file2 as (SRA)_1.fastq or (SRA)_2.fastq
     file1=i+"_1.fastq"
     file2=i+"_2.fastq"
