@@ -3,12 +3,12 @@ import sys
 import json
 # open textfile with SRA accession numbers
 f=open(sys.argv[1])
-# read list of SRA to x
+# read list of SRA numbers to x
 x=f.readlines()
 f.close()
 # open outfile with csv format
 outfile=open("./results/phaster_job_ids.csv","w")
-# for every SRA 
+# for every SRA number
 for i in x:
     # remove whiteline space
     i=i.strip()
